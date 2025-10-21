@@ -8,7 +8,8 @@ import '../styles/CourseCard.css';
 function CourseCard({ course }) {
   const dispatch = useDispatch();
   const wishlist = useSelector(selectWishlist);
-  const isWishlisted = wishlist.some(c => c._id === course._id);
+  const isWishlisted = Array.isArray(wishlist) && wishlist.some(c => c._id === course._id);
+
 
   const handleEnroll = async (e) => {
     e.preventDefault();

@@ -22,9 +22,10 @@ function MyLearning() {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const user = useSelector(selectUser);
-  const enrolledCourses = useSelector(selectMyCourses);
-  const wishlistCourses = useSelector(selectWishlist);
-  const browseCourses = useSelector(selectCourses);
+  const enrolledCourses = useSelector(selectMyCourses) || [];
+const wishlistCourses = useSelector(selectWishlist) || [];
+const browseCourses = useSelector(selectCourses) || [];
+
   const loading = useSelector(selectCourseLoading);
   const error = useSelector(selectCourseError);
 
@@ -53,11 +54,11 @@ function MyLearning() {
   }, []);
 
   const tabs = [
-    { id: 'all', label: 'All Courses', count: enrolledCourses.length },
-    { id: 'in-progress', label: 'In Progress', count: enrolledCourses.filter(c => c.progress > 0 && c.progress < 100).length },
-    { id: 'completed', label: 'Completed', count: enrolledCourses.filter(c => c.progress === 100).length },
-    { id: 'wishlist', label: 'Wishlist', count: wishlistCourses.length }
-  ];
+  { id: 'all', label: 'All Courses', count: Array.isArray(enrolledCourses) ? enrolledCourses.length : 0 },
+  { id: 'in-progress', label: 'In Progress', count: Array.isArray(enrolledCourses) ? enrolledCourses.filter(c => c.progress > 0 && c.progress < 100).length : 0 },
+  { id: 'completed', label: 'Completed', count: Array.isArray(enrolledCourses) ? enrolledCourses.filter(c => c.progress === 100).length : 0 },
+  { id: 'wishlist', label: 'Wishlist', count: Array.isArray(wishlistCourses) ? wishlistCourses.length : 0 }
+];
 
   const filteredCourses = enrolledCourses.filter(course => {
     const matchesTab = activeTab === 'all' || 
