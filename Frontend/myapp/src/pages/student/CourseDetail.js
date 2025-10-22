@@ -67,10 +67,9 @@ function CourseDetail() {
     return (
       <div className="course-detail">
         <Header isScrolled={isScrolled} />
-        <div className="loading-container">
+        
           <div className="loading-spinner"></div>
-          <p>Loading course details...</p>
-        </div>
+          
       </div>
     );
   }
