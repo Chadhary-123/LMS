@@ -39,15 +39,6 @@ exports.protect = async (req, res, next) => {
         });
       }
 
-      // REMOVED: isActive check since User model doesn't have this field
-      // if (!user.isActive) {
-      //   return res.status(401).json({
-      //     success: false,
-      //     message: 'Account is deactivated. Please contact support.'
-      //   });
-      // }
-
-      // Attach user to request object
       req.user = user;
       next();
     } catch (error) {
