@@ -41,7 +41,7 @@ function InstructorDashboard() {
       <div>
      
           <div class="dashboard-loading">
-  <p class="loading-text">Loading dashboard...</p>
+  
   <div class="loading-spinner"></div>
 </div>
 </div>
