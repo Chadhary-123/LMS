@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -6,7 +5,12 @@ const http = require("http");
 const path = require("path");
 const connectDB = require("./config/db");
 const initSocket = require("./config/socket"); // ✅ NEW IMPORT
-
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const courseRoutes = require("./routes/courseRoutes");
+const instructorRoutes = require("./routes/instructorRoutes");
+const videoRoutes = require("./routes/videoRoutes");
+const enrollmentRoutes = require("./routes/enrollmentRoutes");
 dotenv.config();
 
 const app = express();
@@ -22,23 +26,12 @@ app.use(express.urlencoded({ extended: true }));
 // Static uploads
 app.use('/uploads/videos', express.static(path.join(__dirname, 'uploads/videos')));
 app.use('/uploads/thumbnails', express.static(path.join(__dirname, 'uploads/thumbnails')));
-
-// Routes
-const authRoutes = require("./routes/authRoutes");
-const userRoutes = require("./routes/userRoutes");
-const courseRoutes = require("./routes/courseRoutes");
-const instructorRoutes = require("./routes/instructorRoutes");
-const videoRoutes = require("./routes/videoRoutes");
-const enrollmentRoutes = require("./routes/enrollmentRoutes");
-
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/instructor", instructorRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
-
-// Health route
 app.get("/api/health", (req, res) => {
   res.json({
     success: true,

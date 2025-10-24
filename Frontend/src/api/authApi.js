@@ -1,7 +1,7 @@
 // src/api/authApi.js
 import axiosInstance, { setAuthToken } from "./axiosInstance";
 
-// ✅ LOGIN
+//  LOGIN
 export async function login(data) {
   try {
     const res = await axiosInstance.post("/api/auth/login", data);
@@ -12,7 +12,7 @@ export async function login(data) {
   }
 }
 
-// ✅ SIGNUP
+// SIGNUP
 export async function signup(data) {
   try {
     const res = await axiosInstance.post("/api/auth/signup", data);
@@ -23,7 +23,7 @@ export async function signup(data) {
   }
 }
 
-// ✅ GET CURRENT USER (if backend provides /me route)
+//  GET CURRENT USER (if backend provides /me route)
 export async function me() {
   try {
     const res = await axiosInstance.get("/api/auth/me");
@@ -33,7 +33,7 @@ export async function me() {
   }
 }
 
-// ✅ FORGOT PASSWORD (send OTP to email)
+// FORGOT PASSWORD (send OTP to email)
 export async function forgotPassword(data) {
   // data = { email }
   try {
@@ -44,7 +44,7 @@ export async function forgotPassword(data) {
   }
 }
 
-// ✅ VERIFY OTP
+// VERIFY OTP
 export async function verifyOtp(data) {
   // data = { email, otp }
   try {
@@ -55,7 +55,7 @@ export async function verifyOtp(data) {
   }
 }
 
-// ✅ RESET PASSWORD
+// RESET PASSWORD
 export async function resetPassword(data) {
   // data = { email, otp, newPassword }
   try {

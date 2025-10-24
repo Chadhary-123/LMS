@@ -6,7 +6,7 @@ import { combineReducers } from 'redux';
 import authReducer from './slices/authSlice';
 import courseReducer from './slices/courseSlice';
 import instructorReducer from './slices/instructorSlice';
-import userReducer from './slices/userSlice';
+// import userReducer from './slices/userSlice';
 import uiReducer from './slices/uiSlice';
 
 // Persist configuration
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   course: courseReducer,
   instructor: instructorReducer,
-  user: userReducer,
+  // user: userReducer,
   ui: uiReducer
 });
 
