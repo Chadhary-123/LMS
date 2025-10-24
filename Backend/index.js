@@ -4,7 +4,7 @@ const cors = require("cors");
 const http = require("http");
 const path = require("path");
 const connectDB = require("./config/db");
-const initSocket = require("./config/socket"); // ✅ NEW IMPORT
+const initSocket = require("./config/socket"); 
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const courseRoutes = require("./routes/courseRoutes");
@@ -46,13 +46,13 @@ connectDB();
 // Create HTTP server
 const server = http.createServer(app);
 
-// ✅ Initialize Socket.IO (moved to its own file)
+//  Initialize Socket.IO (moved to its own file)
 const io = initSocket(server);
 app.set("io", io);
 
 // Start server
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🎯 Video upload + Socket.IO support enabled`);
+  console.log(` Server running on port ${PORT}`);
+  console.log(` Video upload + Socket.IO support enabled`);
 });

@@ -1,16 +1,16 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const bcrypt = require("bcryptjs"); // ✅ FIX: Import bcrypt
+const bcrypt = require("bcryptjs"); 
 
-// ✅ Helper: Generate JWT
+//  Helper: Generate JWT
 const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, {
     expiresIn: "7d",
   });
 };
 
-// ✅ SIGNUP
+//  SIGNUP
 exports.signup = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -79,7 +79,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// ✅ FORGOT PASSWORD (Send OTP)
+// FORGOT PASSWORD (Send OTP)
 exports.forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -115,7 +115,7 @@ exports.forgotPassword = async (req, res) => {
   }
 };
 
-// ✅ VERIFY OTP
+// VERIFY OTP
 exports.verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
@@ -143,7 +143,7 @@ exports.verifyOtp = async (req, res) => {
   }
 };
 
-// ✅ RESET PASSWORD
+// RESET PASSWORD
 exports.resetPassword = async (req, res) => {
   try {
     const { email, newPassword } = req.body;

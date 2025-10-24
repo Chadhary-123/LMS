@@ -12,7 +12,7 @@ const initSocket = (server) => {
   io.on("connection", (socket) => {
     console.log("⚡ User connected:", socket.id);
 
-    // ✅ Course creation notifications
+    //  Course creation notifications
     socket.on("courseCreated", (data) => {
       console.log("🎓 New course created:", data.courseTitle);
       io.emit("newCourseNotification", {
@@ -26,13 +26,13 @@ const initSocket = (server) => {
 
     // ✅ Video upload progress
     socket.on("videoUploadProgress", (data) => {
-      console.log("📹 Video upload progress:", data);
+      console.log(" Video upload progress:", data);
       socket.emit("uploadProgress", data);
     });
 
     // ✅ General notifications
     socket.on("sendNotification", (data) => {
-      console.log("📩 Notification received:", data);
+      console.log(" Notification received:", data);
       io.emit("receiveNotification", data);
     });
 
@@ -48,7 +48,7 @@ const initSocket = (server) => {
     });
 
     socket.on("disconnect", () => {
-      console.log("❌ User disconnected:", socket.id);
+      console.log(" User disconnected:", socket.id);
     });
   });
 
